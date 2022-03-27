@@ -44,13 +44,15 @@ contract StakingContract is Ownable {
             Stake[] memory stakeList = userStakes[stakers[i]];
             uint256 userTotalTokensRatio;
             for (uint256 j = 0; j < stakeList.length; j++) {
-                uint256 blockDifference = block.number - stakeList[j].start;
-                uint256 currentDbarAmount = stakeList[j].dbarAmount +
-                    (blockDifference * 10 * stakeList[j].dbarAmount) /
-                    100;
-                uint256 tokensRatio = (currentDbarAmount * 10**18) /
-                    stakeList[j].xDbarAmount;
-                userTotalTokensRatio += tokensRatio;
+                if (!stakeList[j].redeemed) {
+                    uint256 blockDifference = block.number - stakeList[j].start;
+                    uint256 currentDbarAmount = stakeList[j].dbarAmount +
+                        (blockDifference * 10 * stakeList[j].dbarAmount) /
+                        100;
+                    uint256 tokensRatio = (currentDbarAmount * 10**18) /
+                        stakeList[j].xDbarAmount;
+                    userTotalTokensRatio += tokensRatio;
+                }
             }
             totalTokensRatio += (userTotalTokensRatio / stakeList.length);
         }
