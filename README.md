@@ -9,7 +9,8 @@ The system will be comprised of the following contracts:
 1. Staking contract: The contract which manages the receipt, staking, and yield of pooled $dbar
 2. Rewards contract: The contract that provides additional yield to users who deposit $dbar to the staking contract. Assume that this contract is initiated/prefilled with $dbar.
 
-Assume emissions rate is 10 $dbar for 1 Block
+Assume emissions rate is 10 $dbar for 1 Block.
+
 Example one:
 1. User 1 deposits 100 $dbar at block 1 he/she will get 100 xDbar
 2. At block 2 staking contract redeems the rewards & he/she will burn 100 xDbar & will get 110 $dbar
